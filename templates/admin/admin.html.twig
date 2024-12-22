@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% if (app.user.getRoles[0] == "ROLE_ADMIN") %}
+        {{ app.user.getName }} Admin space : 
+        <br/>
+        <a href="{{ path('app_publication_index') }}"> Edit Publication </a>
+    {% endif %}
+{% endblock %}

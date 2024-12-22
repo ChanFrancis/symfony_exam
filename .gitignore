@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -23,3 +24,27 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+
+Entity 
+    - Publication
+        -userId (one to many)
+        -tagId (many to many)
+        -title
+        -content
+    - Tag
+        -publicationId
+        -tag
+    - Comment
+        -userId
+        -comment
+    - Reaction
+        -userId
+        -commentsId
+        -like
+        -dislike
+    - User
+        -name
+        -email
+        -password
+        -plainPassword

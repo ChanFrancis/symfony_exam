@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+        Welcome to my website
+
+        {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, {{ app.user.getName }}.
+            <br/>
+            <a href="{{ path('profile') }}"> Your profile </a>
+
+            {%  if(app.user.getRoles[0] == "ROLE_ADMIN") %}
+                <br/> <a href="{{ path('admin') }}"> Admin </a>
+            {% endif %}
+
+            <br/>
+            <form action="{{ path('app_logout') }}" method="post">
+                <button type="submit">Logout</button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('logout') }}">
+            </form>
+        </div>
+
+        {% else %}
+
+        <div class="mb-3">
+            You have to login to access our content ! <a href="{{ path('app_login') }}"> Login </a>
+        </div>
+
+    {% endif %}
+{% endblock %}
